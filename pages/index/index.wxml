@@ -8,18 +8,18 @@
       </navigator>
     </swiper-item>
   </swiper>
-  <view class="m-menu">
+  <!-- <view class="m-menu">
     <navigator  class="item" url="{{item.url}}" wx:for="{{channel}}" wx:key="{{item.id}}">
       <image src="{{item.icon_url}}" background-size="cover"></image>
       <text>{{item.name}}</text>
     </navigator>
-  </view>
+  </view> -->
   <view class="a-section a-brand">
-    <view class="h">
+    <!-- <view class="h">
       <navigator url="../brand/brand">
         <text class="txt">品牌制造商直供</text>
       </navigator>
-    </view>
+    </view> -->
     <view class="b">
       <view class="item item-1" wx:for="{{brand}}" wx:key="item.id">
         <navigator url="/pages/brandDetail/brandDetail?id={{item.id}}">
@@ -75,8 +75,9 @@
         </navigator>
       </view>
     </view>
+  
   </view>
-  <view class="a-section a-topic" wx:if="topics.length > 0">
+  <!-- <view class="a-section a-topic" wx:if="topics.length > 0">
     <view class="h">
       <view>
       <navigator url="../topic/topic" open-type="switchTab">
@@ -122,5 +123,5 @@
           </navigator>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>

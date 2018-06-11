@@ -279,6 +279,12 @@ Page({
       util.showErrorToast('请输入手机号码');
       return false;
     }
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/; 
+
+    if (myreg.test(Number(address.telNumber)) == false) {
+      util.showErrorToast('手机号码错误');
+      return false;
+    }
 
     if (address.district_id == 0) {
       util.showErrorToast('请输入省市区');

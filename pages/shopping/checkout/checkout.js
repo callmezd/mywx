@@ -6,6 +6,8 @@ var app = getApp();
 
 Page({
   data: {
+    addressList:[],
+    
     checkedGoodsList: [],
     checkedAddress: {},
     checkedCoupon: [],
@@ -18,38 +20,64 @@ Page({
     addressId: 0,
     couponId: 0
   },
-  onLoad: function (options) {
 
-    // 页面初始化 options为页面跳转所带来的参数
-
-    try {
-      var addressId = wx.getStorageSync('addressId');
-      if (addressId) {
-        this.setData({
-          'addressId': addressId
+  getAddressList(id) {
+    let that = this;
+    util.request(api.AddressList).then(function (res) {
+      if (res.errno === 0) {
+        that.setData({
+          addressList: res.data
         });
+        console.log(that.data.addressList)
+        // wx.setStorageSync('addressId', event.currentTarget.dataset.addressId);
+
+
+        var addressList = that.data.addressList;
+        if(addressList.length>0){
+          for (var i = 0; i < addressList.length; i++) {
+            if (addressList[i].is_default == 1) {
+              wx.setStorageSync('addressId', addressList[i].id);
+            }else{
+              wx.setStorageSync('addressId', addressList[0].id);
+            }
+          }
+        }
+   
+        
+        if(!id){
+          that.setData({
+            checkedAddress:{id:-1}
+          })
+        }
+        for (var i = 0; i < addressList.length;i++){
+          if (addressList[i].id==id){
+            console.log('等')
+            console.log(addressList[i].id, id)
+            that.setData({
+              checkedAddress: addressList[i]
+            })
+          }
+        }
       }
-
-      var couponId = wx.getStorageSync('couponId');
-      if (couponId) {
-        this.setData({
-          'couponId': couponId
-        });
-      }
-    } catch (e) {
-      // Do something when catch error
-    }
-
-
+    });
+  },
+  onLoad: function (options) { 
+    // this.getAddressList(this.data.addressId)  
   },
   getCheckoutInfo: function () {
+    console.log(this.data.addressId)
+    console.log(this.data.addressId)
+    console.log(this.data.addressId)
+    console.log(this.data.addressId)
+    console.log(this.data.addressId)
+    console.log(this.data.addressId)
     let that = this;
     util.request(api.CartCheckout, { addressId: that.data.addressId, couponId: that.data.couponId }).then(function (res) {
       if (res.errno === 0) {
         console.log(res.data);
         that.setData({
           checkedGoodsList: res.data.checkedGoodsList,
-          checkedAddress: res.data.checkedAddress,
+          // checkedAddress: res.data.checkedAddress,
           actualPrice: res.data.actualPrice,
           checkedCoupon: res.data.checkedCoupon,
           couponList: res.data.couponList,
@@ -58,10 +86,10 @@ Page({
           goodsTotalPrice: res.data.goodsTotalPrice,
           orderTotalPrice: res.data.orderTotalPrice
         });
-      }
+      }  
+      // console.log(res.data.checkedAddress)     
       if (res.data["checkedAddress"].id==null){
-        console.log(res.data.checkedAddress)
-       
+        console.log(res.data.checkedAddress)       
       }
       wx.hideLoading();
     });
@@ -81,6 +109,31 @@ Page({
 
   },
   onShow: function () {
+    try {
+      let that = this;
+      var addressId = wx.getStorageSync('addressId');
+      if (addressId) {
+        this.setData({
+          'addressId': addressId
+        });
+      }
+      console.log(this.data.addressList)
+      console.log(addressId)
+
+      var couponId = wx.getStorageSync('couponId');
+      if (couponId) {
+        this.setData({
+          'couponId': couponId
+        });
+      }
+    } catch (e) {
+      // Do something when catch error
+    }
+    this.getAddressList(this.data.addressId)  
+    console.log(this.data)
+    if (this.data.addressList.length>0){
+      
+    }
     // 页面显示
     wx.showLoading({
       title: '加载中...',
@@ -97,6 +150,7 @@ Page({
 
   },
   submitOrder: function () {
+    console.log(this.data.addressId)    
     if (this.data.addressId <= 0) {
       util.showErrorToast('请选择收货地址');
       return false;

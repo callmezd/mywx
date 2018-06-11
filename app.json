@@ -1,9 +1,21 @@
 {
   "pages": [
+
     "pages/index/index",
+    
+    "pages/hotGoods/hotGoods",
+    
+    "pages/search/search",
+    
+    
+    
+    
+    
+    "pages/ucenter/index/index",
+    
+    "pages/cart/cart",   
     "pages/catalog/catalog",
     "pages/newGoods/newGoods",
-    "pages/hotGoods/hotGoods",
     "pages/ucenter/address/address",
     "pages/ucenter/addressAdd/addressAdd",
     "pages/ucenter/footprint/footprint",
@@ -17,16 +29,14 @@
     "pages/auth/reset/reset",
     "pages/pay/pay",
     "pages/payResult/payResult",
-    "pages/ucenter/index/index",
+  
     "pages/topic/topic",
     "pages/comment/comment",
     "pages/commentPost/commentPost",
     "pages/topicComment/topicComment",
     "pages/brand/brand",
     "pages/brandDetail/brandDetail",
-    "pages/search/search",
     "pages/category/category",
-    "pages/cart/cart",
     "pages/shopping/checkout/checkout",
     "pages/shopping/address/address",
     "pages/shopping/addressAdd/addressAdd",
@@ -36,13 +46,13 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "xcds",
+    "navigationBarTitleText": "黑水县商贸平台",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
   "tabBar": {
     "backgroundColor": "#fafafa",
-    "borderStyle": "white",
+    "borderStyle": "white",  
     "selectedColor": "#b4282d",
     "color": "#666",
     "list": [
@@ -52,12 +62,7 @@
         "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
         "text": "首页"
       },
-      {
-        "pagePath": "pages/topic/topic",
-        "iconPath": "static/images/ic_menu_topic_nor.png",
-        "selectedIconPath": "static/images/ic_menu_topic_pressed.png",
-        "text": "专题"
-      },
+  
       {
         "pagePath": "pages/catalog/catalog",
         "iconPath": "static/images/ic_menu_sort_nor.png",

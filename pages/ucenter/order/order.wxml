@@ -18,7 +18,8 @@
             <view class="b">
                 <view class="l">实付：￥{{item.actual_price}}</view>
                 <view class="r">
-                    <button class="btn" data-order-index="{{index}}" catchtap="payOrder" wx:if="{{item.handleOption.pay}}">去付款</button>
+                    <!-- <button class="btn" data-order-index="{{index}}" data-order-orderId="{{order_sn}}"  catchtap="payOrder" wx:if="{{item.handleOption.pay}}">去付款</button> -->
+                    <button class="btn" data-order-price="{{item.actual_price}}" data-order-orderId="{{item.order_sn}}"  catchtap="payOrder" wx:if="{{item.handleOption.pay}}">去付款</button>
                 </view>
             </view>
         </navigator>

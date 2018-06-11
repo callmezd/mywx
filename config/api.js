@@ -40,7 +40,7 @@ module.exports = {
     TopicDetail: NewApiRootUrl + 'topic/detail',  //专题详情
     TopicRelated: NewApiRootUrl + 'topic/related',  //相关专题
 
-    SearchIndex: NewApiRootUrl + 'search/index',  //搜索页面数据
+    SearchIndex: NewApiRootUrl + 'search/search',  //搜索页面数据
     SearchResult: NewApiRootUrl + 'search/result',  //搜索数据
     SearchHelper: NewApiRootUrl + 'search/helper',  //搜索帮助
     SearchClearHistory: NewApiRootUrl + 'search/clearhistory',  //搜索帮助

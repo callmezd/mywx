@@ -45,6 +45,7 @@ Page({
             navList: res.data.brotherCategory,
             currentCategory: res.data.currentCategory
           });
+          console.log(res.data.currentCategory)
 
           //nav位置
           let currentIndex = 0;

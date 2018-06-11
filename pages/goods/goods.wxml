@@ -70,10 +70,10 @@
       </view>
     </view>
 
-    <view class="detail">
+    <!-- <view class="detail">
       <import src="../../lib/wxParse/wxParse.wxml" />
       <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}" />
-    </view>
+    </view> -->
 
 
     <view class="common-problem">
@@ -94,7 +94,7 @@
       </view>
     </view>
 
-    <view class="related-goods" wx:if="{{relatedGoods.length > 0}}">
+    <!-- <view class="related-goods" wx:if="{{relatedGoods.length > 0}}">
       <view class="h">
         <view class="line"></view>
         <text class="title">大家都在看</text>
@@ -108,7 +108,7 @@
           </navigator>
         </view>
       </view>
-    </view>
+    </view> -->
 
   </view>
   <view wx:if="{{openAttr}}" class="attr-pop">

@@ -24,6 +24,7 @@ Page({
         that.setData({
           addressList: res.data
         });
+        console.log(res.data)
       }
     });
   },
@@ -34,6 +35,7 @@ Page({
     });
   },
   selectAddress(event){
+    console.log("地址id")
     console.log(event.currentTarget.dataset.addressId);
 
     try {

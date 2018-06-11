@@ -1,5 +1,7 @@
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
+const pay = require('../../../services/pay.js');
+
 
 Page({
   data: {
@@ -127,9 +129,23 @@ Page({
   },
   payOrder() {
     let that = this;
+    var _price=this.data["orderGoods"];
+    console.log(_price[0]);
+    var id = that.data.orderId;
+    // wx.redirectTo({
+    //   url: '/pages/pay/pay?orderId=' + id.orderOrderid + '&actualPrice=' + _price[0].retail_price,
+    // })
+
     util.request(api.PayPrepayId, {
       orderId: that.data.orderId || 15
     }).then(function (res) {
+      console.log(111111111111111111111111111111111111111111)
+      console.log(res)
+      if(res.errno!=0){
+        wx.redirectTo({
+          url: '/pages/payResult/payResult?status=0&orderId=' + that.data.orderId
+        });
+      }
       if (res.errno === 0) {
         const payParam = res.data;
         wx.requestPayment({
@@ -138,11 +154,9 @@ Page({
           'package': payParam.package,
           'signType': payParam.signType,
           'paySign': payParam.paySign,
-          'success': function (res) {
-            console.log(res);
+          success: function (res) {
           },
-          'fail': function (res) {
-            console.log(res);
+          fail: function (res) {
           }
         });
       }

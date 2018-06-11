@@ -69,7 +69,7 @@ page {
 
 .catalog .nav .item.active {
   color: #ab2b2b;
-  font-size: 36rpx;
+  font-size: 30rpx;
   border-left: 6rpx solid #ab2b2b;
 }
 

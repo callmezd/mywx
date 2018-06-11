@@ -13,6 +13,8 @@ Page({
       orderId: options.orderId,
       actualPrice: options.actualPrice
     })
+    console.log(options)
+    console.log(1111111111111111111)
   },
   onReady: function () {
 

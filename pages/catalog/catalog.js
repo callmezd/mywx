@@ -25,6 +25,7 @@ Page({
           navList: res.data.categoryList,
           currentCategory: res.data.currentCategory
         });
+        console.log(res.data)
         wx.hideLoading();
       });
     util.request(api.GoodsCount).then(function (res) {
@@ -55,22 +56,21 @@ Page({
   onUnload: function () {
     // 页面关闭
   },
-  getList: function () {
-    var that = this;
-    util.request(api.ApiRootUrl + 'api/catalog/' + that.data.currentCategory.cat_id)
-      .then(function (res) {
-        that.setData({
-          categoryList: res.data,
-        });
-      });
-  },
+  // getList: function () {
+  //   var that = this;
+  //   util.request(api.ApiRootUrl + 'api/catalog/' + that.data.currentCategory.cat_id)
+  //     .then(function (res) {
+  //       that.setData({
+  //         categoryList: res.data,
+  //       });
+  //     });
+  // },
   switchCate: function (event) {
     var that = this;
     var currentTarget = event.currentTarget;
     if (this.data.currentCategory.id == event.currentTarget.dataset.id) {
       return false;
     }
-
     this.getCurrentCategory(event.currentTarget.dataset.id);
   }
 })

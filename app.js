@@ -12,6 +12,7 @@ App({
     }).catch(() => {
       
     });
+    
   },
   
   globalData: {

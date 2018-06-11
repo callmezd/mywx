@@ -267,6 +267,9 @@ Page({
     })
   },
   saveAddress(){
+
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/; 
+
     console.log(this.data.address)
     let address = this.data.address;
 
@@ -275,11 +278,17 @@ Page({
 
       return false;
     }
-
-    if (address.telNumber == '') {
+    
+     if (address.telNumber == '' ) {
+       console.log(myreg.test(1))
       util.showErrorToast('请输入手机号码');
       return false;
     }
+
+     if (myreg.test(Number(address.telNumber)) == false){
+       util.showErrorToast('手机号码错误');
+       return false;
+     }
 
 
     if (address.district_id == 0) {

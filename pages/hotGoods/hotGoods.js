@@ -95,6 +95,7 @@ Page({
   },
   selectCategory: function(event){
     let currentIndex = event.target.dataset.categoryIndex;
+    console.log(event)
     this.setData({
       'categoryFilter': false,
       'categoryId': this.data.filterCategory[currentIndex].id
